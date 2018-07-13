@@ -1,18 +1,19 @@
 <!DOCTYPE project []>
 
-<project name="Using_Ant_To_Run_TestNG_Tests" default="usage" basedir=".">
+<project name="RBShoesJR Project" default="usage" basedir=".">
 	
 <!-- ========== Initialize Property Variables =================================== -->
 
 	<property environment="env" />
 	
-	<property name="test.home" value="${basedir}" description="Specifies JAVA project location"/>
-	<property name="test.src" value="${test.home}/src" description="Specifies src folder location in the project"/>
-	<property name="test.jars" value="C:/SeleniumJars" description="Specifies JARs location"/>
-	<property name="test.dest" value="${test.home}/ant_build" description="Specifies location to store .class compiled files"/>
-	<property name="test.reports" value="${test.home}/ant_reports" description="Specifies test reports output location"/>
-
-	<property name="test.suite" value="${test.src}/test/java/com/test1/testsuites/RegressionSuite.xml" description="Specifies TestNG test suite xml"/>
+	<property name="test.home" value="${basedir}" description="JAVA project location"/>
+	<property name="test.src" value="${test.home}/src" description="src folder location in the project"/>
+	<property name="test.jars" value="C:/SeleniumJars" description="Jar file location"/>
+	<property name="test.dest" value="${test.home}/ant_build" description="Location to store .class compiled files"/>
+	<property name="test.reports" value="${test.home}/ant_reports" description="Test reports output location"/>
+	<property name="printscreen" value="${basedir}/printscreen" description="printscreen location" />
+	<property name="test.suite" value="${test.src}/test/java/com/RBShoesJR/testsuites/RegressionSuite.xml" description="Regression Test Suite xml"/>
+	<property name="rbshoesmokesuite" value="${basedir}/SmokeSuite.xml" description="Location of Smoke Suite xml" />
 	
     <path id="test.classpath">
 	    <pathelement location="${test.dest}" />
@@ -28,7 +29,9 @@
 		<echo message="Deleting Ant Build directory..." />
 		<delete dir="${test.dest}" /> 
 		<echo message="Deleting Ant Reports directory..." />
-		<delete dir="${test.reports}" /> 
+		<delete dir="${test.reports}" />
+		<echo message="Deleting PrintScreen directory..." />
+		<delete dir="${printscreen}" />
 	</target>
 	
 <!-- ========== Target Compile - Compiles the JAVA code and generates .class files ======== -->
@@ -37,11 +40,13 @@
 		<mkdir dir="${test.dest}" />
 		<echo message="Creating Ant Reports directory..." />
 		<mkdir dir="${test.reports}" />
+		<echo message="Creating PrintScreen directory..." />
+		<mkdir dir="${printscreen}" />
 		<echo message="Compiling the JAVA code..." />
 		<javac srcdir="${test.src}" destdir="${test.dest}" classpathref="test.classpath"  verbose="false" debug="true"> </javac> 
 	</target>
 
-<!-- ========== Target Run - Run the TestNG Tests and Generate Reports ====================== -->
+<!-- ========== Target Run ==================================================================== -->
 	  <target name="run" depends="compile">
 	  	
 		<echo message="Starting the execution of tests..." />
@@ -51,15 +56,14 @@
 	  		listeners = "org.testng.reporters.FailedReporter, org.testng.reporters.DotTestListener"
 	  		haltonfailure="false">
 	  		<classfileset dir="${test.dest}">
-				<!-- =========== Specify which tests to run =========== -->
 	  		 	<!-- <include name="**/*.class" to run all the TestNG classes in the project"/> -->	  				  			
-	  			<include name="com/test1/tests/RTest.class" /> 
+	  			<include name="com/RBShoesJR/tests/RTest.class" /> 
 	  			
 	  		</classfileset>
 	  	</testng>
 	  </target>
 		
-<!-- ========== Target RunSuite - Run the TestNG Suite and Generate Reports ====================== -->
+<!-- ========== Target RunSuite - ============================================================== -->
 		  <target name="runsuite" depends="compile">
 		  	
 			<echo message="Starting the execution of test suite..." />
@@ -72,6 +76,43 @@
 		  	   <xmlfileset  file="${test.suite}"/>
 		  	</testng>
 		  </target>
+
+	<!-- ========== Target Run Smoke Test Suite - Run RB Shoes Smoke Test Suite and Generate Report ====================== -->
+		<target name="runsmokesuite" depends="compile">
+
+			<echo message="Starting the execution of smoke test suite..." />
+
+			<testng classpathref="test.classpath" listeners="org.testng.reporters.FailedReporter, org.testng.reporters.DotTestListener" outputDir="${test.reports}" haltOnfailure="false">
+				<!-- =========== Specify which test suites to run in test.suite property =========== -->
+				<xmlfileset file="${rbshoesmokesuite}" />
+			</testng>
+			<mail mailhost="smtp.gmail.com" mailport="465" subject="RB Shoes Smoke Test Suite Results" ssl="true" user="syntester0077@gmail.com" password="***@ssw0rd">
+									<from address="syntester0077@gmail.com">
+									</from>
+									<replyto address="syntester0077@gmail.com">
+									</replyto>									
+									<to address="synhlee@yahoo.com">
+									</to>
+									<to address="synhlee@gmail.com">
+									</to>
+									<!--
+									<cc address=" add email ">
+									</cc>
+							    	<cc address=" add email ">
+									</cc>
+									<bcc address="user@rbshoes.com">
+									</bcc> -->
+									<message>Smoke test suite has completed</message>
+									<attachments>
+										<fileset dir="${test.reports}">
+											<include name="emailable-report.html" />
+										</fileset>
+										<fileset dir="printscreen">
+											<include name="**/*png" />
+										</fileset>
+									</attachments>
+								</mail>
+		</target>	
 	
 <!-- ========== Target Usage - Default target to run when just Ant command alone is used =========== -->
 		  <target name="usage">

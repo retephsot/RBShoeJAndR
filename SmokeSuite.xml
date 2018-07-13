@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Smoke Suite" parallel="tests">
+    <test name="Smoke test group 1" preserve-order="true">  
+    	<parameter name="browserRemote" value="chromeRemoteHeadless"/>	
+        <classes>
+        	<class name="com.RBShoesJR.tests.EmailReminderSubmitTest"/>
+        	<class name="com.RBShoesJR.tests.VerifyEmailFieldTest"/>	     		
+        </classes>
+    </test>
+    <test name="Smoke test group 2" preserve-order="true">  
+    	<parameter name="browserRemote" value="firefoxRemoteHeadless"/>	
+        <classes>
+        	<class name="com.RBShoesJR.tests.HomeEmailReminderSubmitTest"/>
+        	<class name="com.RBShoesJR.tests.VerifyHomeEmailFieldTest"/>	     		
+        </classes>
+    </test>
+    <test name="Smoke test group 3" preserve-order="true">  
+    	<parameter name="browserRemote" value="chromeRemoteHeadless"/>	
+        <classes>
+        	<class name="com.RBShoesJR.tests.ShoeBlurbAvailableTest"/>
+        </classes>
+    </test>
+    <test name="Smoke test group 4" preserve-order="true">  
+    	<parameter name="browserRemote" value="edgeRemote"/>	
+        <classes>
+        	<class name="com.RBShoesJR.tests.ShoePictureAvailableTest"/>
+        	<class name="com.RBShoesJR.tests.ShoePriceAvailableTest"/> 		       	
+        </classes>
+    </test>
+  </suite>
