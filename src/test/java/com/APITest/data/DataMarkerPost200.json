@@ -1,0 +1,34 @@
+{  
+  "data":{
+  	"type":"marker",
+  	"file_id":"x_dmp_data",
+  	"level_id":"usa-11",
+  	"topic_id":"dmp_use_code_std_desc_lps",
+  	"country_id":"usa","opacity":50,
+  	"filters":[{"topic_id":"dmp_use_code_std_desc_lps","operator":"equals","values":"DISTRIBUTION WAREHOUSE (REGIONAL)"}],
+  	"legend":{"title":"Building Type",
+  	"subTitle":"Warehouse",
+  	"rows":[{"topic_id":"dmp_use_code_std_desc_lps","operator":"equals","values":"DISTRIBUTION WAREHOUSE (REGIONAL)","color":"3c78d8:Circle"},{"topic_id":"dmp_use_code_std_desc_lps","operator":"equals","values":"--Other--",
+  	"color":"93c47d:Circle"}]
+  	},
+  	"popup":{"header":[{"type":"","file_id":"x_dmp_data","topic_id":"dmp_use_code_std_desc_lps"}],
+  	"tabs":[{"tab_id":1455313580766,"tab_label":"Property Info","data":[{"file_id":"x_dmp_data","topic_id":"dmp_building_sqft"},{"file_id":"x_dmp_data","topic_id":"dmp_lot_size_area_orgn"},{"file_id":"x_dmp_data","topic_id":"dmp_site_zip"}]}]
+  	}
+  	
+  },
+  "mapinfo":{  
+    "nelat":33.887232489311444,
+    "nelng":-84.19784545898432,
+    "swlat":33.76402163162376,
+    "swlng":-84.52108383178705,
+    "celat":33.82564925359296,
+    "celng":-84.3594646453857,
+    "zoom":13,
+    "limit":1000
+  },
+  "ids":[  
+
+  ],
+  "aggregates":"false",
+  "details":"false"
+}
