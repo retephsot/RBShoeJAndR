@@ -10,7 +10,7 @@ public class PostData {
 	
 
 	public final String deleteJsonBody = "{"
- + "\"vendorname\": \"MapAnythingRunscopeTestVendor\""
+ + "\"vendorname\": \"RBShoesRSTestVendor\""
  + "}";
 	
 	
@@ -23,14 +23,14 @@ public class PostData {
 			+ "\"sfdcid\": \"a0m41000009L9EDAA0\""
 			+ "}";
 	
-	public final String externallIdJson = "{\"externalid\": \"e3c91902-6d22-45fd-bd35-d4242fcab905\",\"sfdcid\": \"a0m41000009L9EDAA0\"}";
+	public final String externallIdJson = "{\"externalid\": \"00000-6d22-45fd-0000-d4242fca0000\",\"sfdcid\": \"a0m41000009L9E000\"}";
 	
 	
-	public final String liveAuthSettingsEmail = "{"
+	public final String RBAuthSettingsEmail = "{"
 			+	"\"email\":\"yoyo_test12345@mymail.com\""		
 			+   "}";
 	
-	public final String liveAuthSettingsLiveApp = "{"
+	public final String RBAuthSettingsLiveApp = "{"
 			+ "\"settings\":["
 		    + 	"{"
 		    +			"\"eventType\":\"red_button_press\","
