@@ -3092,9 +3092,6 @@ public class RBShoe_Shapes_boundary {
 		
 	}
 	
-	/*
-	 *  Boundary Geography
-	 */
 	
 
 }
