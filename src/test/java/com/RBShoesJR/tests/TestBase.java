@@ -23,6 +23,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -30,8 +31,10 @@ import com.RBShoesJR.pages.HomePage;
 import com.RBShoesJR.util.JsonReader;
 import com.RBShoesJR.util.SendMail;
 import com.RBShoesJR.util.WebDriverHelper;
+import com.RBShoesJR.tests.RBTestListenerAdapter;
 import com.RBShoesJR.helper.TestResultsTR;
 
+@Listeners(RBTestListenerAdapter.class)
 public class TestBase {
 
 	protected WebDriver driver;
@@ -129,8 +132,6 @@ public class TestBase {
 			 }
 			 
 			 WebDriverHelper.quitDriver(driver);
-
-		WebDriverHelper.quitDriver(driver);
 	}
 
 	

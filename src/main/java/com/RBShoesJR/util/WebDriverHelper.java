@@ -66,6 +66,7 @@ public class WebDriverHelper {
 			            capabilities.setCapability("chrome.binary",windowsChromeDriver);		            			            
 			            capabilities.setCapability(ChromeOptions.CAPABILITY, options);		            
 			            driver = new ChromeDriver(capabilities);
+			            driver.manage().window().maximize();
 						
 					}
 					else if(browserRemote.equalsIgnoreCase("chromeRemoteHeadless")) {
@@ -87,6 +88,7 @@ public class WebDriverHelper {
 							DesiredCapabilities capabilities = DesiredCapabilities.firefox();							
 						    capabilities.setCapability("marionette",true);
 							driver = new FirefoxDriver(capabilities);
+							driver.manage().window().maximize();
 						
 					}
 					
@@ -108,6 +110,7 @@ public class WebDriverHelper {
 						EdgeOptions options = new EdgeOptions();
 						options.setPageLoadStrategy("eager");
 						driver = new EdgeDriver();
+						driver.manage().window().maximize();
 							
 						}
 					else
@@ -133,6 +136,7 @@ public class WebDriverHelper {
 						DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 					    capabilities.setCapability("marionette",true);
 						driver = new FirefoxDriver(capabilities);
+						driver.manage().window().maximize();
 						
 					}
 					else if(browser.equalsIgnoreCase("FireFoxHeadless")) {
@@ -154,6 +158,7 @@ public class WebDriverHelper {
 			            capabilities.setCapability("chrome.binary",windowsChromeDriver);	            				            
 			            capabilities.setCapability(ChromeOptions.CAPABILITY, options);		            
 			            driver = new ChromeDriver(capabilities);
+			            driver.manage().window().maximize();
 			            
 			            //	driver = new ChromeDriver();
 					}
@@ -184,7 +189,8 @@ public class WebDriverHelper {
 					else if(browser.equalsIgnoreCase("IE"))
 					{
 						System.setProperty("webdriver.ie.driver",windowsIEDriver);			
-						driver = new InternetExplorerDriver();			
+						driver = new InternetExplorerDriver();
+						driver.manage().window().maximize();
 					}
 					else if(browser.equalsIgnoreCase("Edge"))
 					{
@@ -192,6 +198,7 @@ public class WebDriverHelper {
 						EdgeOptions options = new EdgeOptions();
 						options.setPageLoadStrategy("eager");
 						driver = new EdgeDriver();
+						driver.manage().window().maximize();
 					}
 											
 					else
@@ -217,6 +224,7 @@ public class WebDriverHelper {
 						capability.setBrowserName("chrome");
 						capability.setPlatform(Platform.ANY);
 						driver = new ChromeDriver(capability);
+						driver.manage().window().maximize();
 					}
 					else if(browserRemote.equalsIgnoreCase("chromeRemoteHeadless")) {
 						System.out.println("Opening Chrome Driver");					
@@ -234,6 +242,7 @@ public class WebDriverHelper {
 						capability.setBrowserName("internetExplorer");
 						capability.setPlatform(Platform.ANY);
 						driver = new FirefoxDriver(capability);
+						driver.manage().window().maximize();
 					}
 					else if(browserRemote.equalsIgnoreCase("firefoxRemoteHeadless")) {						
 						 System.setProperty("webdriver.gecko.driver",macGeckoDriver);
@@ -259,6 +268,7 @@ public class WebDriverHelper {
 						DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 					    capabilities.setCapability("marionette",true);
 						driver = new FirefoxDriver(capabilities);
+						driver.manage().window().maximize();
 					}
 					else if(browser.equalsIgnoreCase("firefoxHeadless")) {
 						
@@ -274,7 +284,8 @@ public class WebDriverHelper {
 					else if(browser.equalsIgnoreCase("Chrome"))
 					{
 						System.setProperty("webdriver.chrome.driver", macChromeDriver);
-						driver = new ChromeDriver();								
+						driver = new ChromeDriver();
+						driver.manage().window().maximize();
 					}
 					else if(browser.equalsIgnoreCase("ChromeHeadless"))
 					{
@@ -325,6 +336,7 @@ public class WebDriverHelper {
 			            capabilities.setCapability("chrome.binary",linuxChromeDriver);			            
 			            capabilities.setCapability(ChromeOptions.CAPABILITY, options);		            
 			            driver = new ChromeDriver(capabilities);
+			            driver.manage().window().maximize();
 					}
 					else if(browserRemote.equalsIgnoreCase("chromeRemoteHeadless")) {
 						System.out.println("Opening Chrome Driver");					
@@ -342,7 +354,8 @@ public class WebDriverHelper {
 						DesiredCapabilities capability = DesiredCapabilities.firefox();
 						capability.setBrowserName("firefox");
 						capability.setPlatform(Platform.LINUX);
-						driver = new RemoteWebDriver(new URL(linuxGeckoDriver), capability);		
+						driver = new RemoteWebDriver(new URL(linuxGeckoDriver), capability);
+						driver.manage().window().maximize();
 					}
 					else if(browserRemote.equalsIgnoreCase("firefoxRemoteHeadless")) {
 						
@@ -372,6 +385,7 @@ public class WebDriverHelper {
 							DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 						    capabilities.setCapability("marionette",true);
 							driver = new FirefoxDriver(capabilities);
+							driver.manage().window().maximize();
 						}
 						else if(browser.equalsIgnoreCase("firefoxHeadless")) {	
 							System.out.println("Opening Gecko Driver Headless");
@@ -391,7 +405,8 @@ public class WebDriverHelper {
 				            ChromeOptions options = new ChromeOptions();
 				            capabilities.setCapability("chrome.binary",linuxChromeDriver);			            
 				            capabilities.setCapability(ChromeOptions.CAPABILITY, options);		            
-				            driver = new ChromeDriver(capabilities);								
+				            driver = new ChromeDriver(capabilities);
+				            driver.manage().window().maximize();
 						}
 						else if(browser.equalsIgnoreCase("ChromeHeadless")) {
 							System.out.println("Opening Chrome Driver Headless");					
@@ -414,14 +429,13 @@ public class WebDriverHelper {
 			}	
 			
 			driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
-			Dimension dim = new Dimension(1560,840);
+/*			Dimension dim = new Dimension(1560,840);
 			
-			if(browser.equalsIgnoreCase("headless")) {
-				driver.manage().window().setSize(dim);
-			}
-			else {
+			if(browser.contains("fullScreen")) {
+//				driver.manage().window().setSize(dim);
 				driver.manage().window().maximize();
-			}
+			}  */
+							
 			return driver;
 		}
 		

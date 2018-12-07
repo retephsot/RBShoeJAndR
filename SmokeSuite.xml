@@ -1,5 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Smoke Suite" parallel="tests">
+<suite name="Smoke Suite" parallel="tests" thread-count="6">
+	<listeners>
+		<listener class-name="com.RBShoesJR.tests.RetryListenerClass"/>
+	</listeners>
     <test name="Smoke test group 1" preserve-order="true">  
     	<parameter name="browserRemote" value="chromeRemoteHeadless"/>	
         <classes>
