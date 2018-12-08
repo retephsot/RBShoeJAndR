@@ -30,4 +30,15 @@ public class JSHelp extends PageBase {
 		
 	}
 
+	
+	/*
+	 * JS help using cssSelector locator
+	 */
+	public void jsClickCssSel(WebElement cssSelLoc) {
+		
+		((JavascriptExecutor)driver).executeScript("arguments[0].click();", cssSelLoc);
+		
+	}
+
+
 }
