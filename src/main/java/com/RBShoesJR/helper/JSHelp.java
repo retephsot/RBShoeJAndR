@@ -29,6 +29,7 @@ public class JSHelp extends PageBase {
 		((JavascriptExecutor)driver).executeScript("arguments[0].setAttribute('innerHTML','" + sendKeyStr + "');", xPathLoc);
 		
 	}
+
 	
 	/*
 	 * JS help using cssSelector locator
@@ -38,5 +39,6 @@ public class JSHelp extends PageBase {
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", cssSelLoc);
 		
 	}
+
 
 }
