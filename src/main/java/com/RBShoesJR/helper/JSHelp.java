@@ -39,6 +39,12 @@ public class JSHelp extends PageBase {
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", cssSelLoc);
 		
 	}
+	
+	public void jsScrollIntoViewCssSel(WebElement cssSelLoc) {
+		
+		((JavascriptExecutor)driver).executeScript("arguments[0].srollIntoView(true);", cssSelLoc);
+
+	}
 
 
 }
