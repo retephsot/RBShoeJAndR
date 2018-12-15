@@ -31,6 +31,7 @@ public class APITestBase {
 	protected static Properties apiTestConfig;
 	public String baseURLStaging;
 	public String baseURLProd;
+	public String baseURIReqres;
 	public String baseURL;
 	public String timeLimit;
 	public String timeLimitLStr;
@@ -60,6 +61,7 @@ public class APITestBase {
 	baseURLStaging = apiTestConfig.getProperty("baseURLStaging");
 	baseURLProd = apiTestConfig.getProperty("baseURLProd");
 	baseURL = apiTestConfig.getProperty("baseURLStaging");
+	baseURIReqres = apiTestConfig.getProperty("baseReqresURI");
 	timeLimit = apiTestConfig.getProperty("timeLimit");
 	timeLimitLStr = apiTestConfig.getProperty("timeLimitL");
 	tileKey1Prod = apiTestConfig.getProperty("tileKey1Prod");
@@ -74,9 +76,9 @@ public class APITestBase {
 	@DataProvider(name = "dataProvider")
 	 public Object[][] passData(Method method) throws IOException, ParseException {
 		apiTestConfig = new Properties();
-		apiTestConfig.load(new FileInputStream("TestConfig.properties"));
+		apiTestConfig.load(new FileInputStream("APITestConfig.properties"));
 			
-		return JsonReader.getdata(apiTestConfig.getProperty("jsonDataLocation")+"TestDataSet.json", method.getName());
+		return JsonReader.getdata(apiTestConfig.getProperty("jsonDataLocation")+"RestAPITestValidationData.json", method.getName());
 	}
 
 	@AfterMethod

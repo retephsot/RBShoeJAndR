@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.APITest.tests.SampleAPITests">
+      <class name="com.APITest.tests.SamplePostRequest">
         <methods>
           <include name="setAPITestConfig"/>
+          <include name="s200_RegisterTokenReturned" invocation-numbers="0"/>
           <include name="getRestCallConfig"/>
           <include name="afterMethod"/>
-          <include name="s200_Get_WeatherInfoByZipcode"/>
         </methods>
-      </class> <!-- com.APITest.tests.SampleAPITests -->
+      </class> <!-- com.APITest.tests.SamplePostRequest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

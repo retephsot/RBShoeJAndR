@@ -2,54 +2,68 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="4365" started-at="2018-12-14T23:58:26Z" finished-at="2018-12-14T23:58:30Z">
+  <suite name="Default suite" duration-ms="4354" started-at="2018-12-15T01:11:38Z" finished-at="2018-12-15T01:11:42Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="4365" started-at="2018-12-14T23:58:26Z" finished-at="2018-12-14T23:58:30Z">
-      <class name="com.APITest.tests.SampleAPITests">
-        <test-method status="PASS" signature="setAPITestConfig()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="setAPITestConfig" is-config="true" duration-ms="11" started-at="2018-12-14T18:58:26Z" finished-at="2018-12-14T18:58:26Z">
+    <test name="Default test" duration-ms="4354" started-at="2018-12-15T01:11:38Z" finished-at="2018-12-15T01:11:42Z">
+      <class name="com.APITest.tests.SamplePostRequest">
+        <test-method status="PASS" signature="setAPITestConfig()[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="setAPITestConfig" is-config="true" duration-ms="11" started-at="2018-12-14T20:11:38Z" finished-at="2018-12-14T20:11:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setAPITestConfig -->
-        <test-method status="PASS" signature="s200_Get_PComments()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="s200_Get_PComments" duration-ms="3036" started-at="2018-12-14T18:58:26Z" description="simple get call to test this framework" finished-at="2018-12-14T18:58:29Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- s200_Get_PComments -->
-        <test-method status="PASS" signature="getRestCallConfig()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="getRestCallConfig" is-config="true" duration-ms="0" started-at="2018-12-14T18:58:26Z" finished-at="2018-12-14T18:58:26Z">
+        <test-method status="PASS" signature="getRestCallConfig()[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="getRestCallConfig" is-config="true" duration-ms="0" started-at="2018-12-14T20:11:38Z" finished-at="2018-12-14T20:11:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getRestCallConfig -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="afterMethod" is-config="true" duration-ms="214" started-at="2018-12-14T18:58:29Z" finished-at="2018-12-14T18:58:29Z">
+        <test-method status="PASS" signature="s200_RegisterTokenReturned(java.lang.String)[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="s200_RegisterTokenReturned" duration-ms="3106" started-at="2018-12-14T20:11:38Z" description="simple post call to test this framework" data-provider="dataProvider" finished-at="2018-12-14T20:11:41Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=s200_Get_PComments status=SUCCESS method=SampleAPITests.s200_Get_PComments()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8] output={null}]]]>
+                <![CDATA[token]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- s200_RegisterTokenReturned -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="afterMethod" is-config="true" duration-ms="226" started-at="2018-12-14T20:11:41Z" finished-at="2018-12-14T20:11:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=s200_RegisterTokenReturned status=SUCCESS method=SamplePostRequest.s200_RegisterTokenReturned(java.lang.String)[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="s200_Get_WeatherInfoByZipcode()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="s200_Get_WeatherInfoByZipcode" duration-ms="982" started-at="2018-12-14T18:58:29Z" description="simple get call to validate the required fields are included in the response body" finished-at="2018-12-14T18:58:30Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- s200_Get_WeatherInfoByZipcode -->
-        <test-method status="PASS" signature="getRestCallConfig()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="getRestCallConfig" is-config="true" duration-ms="0" started-at="2018-12-14T18:58:29Z" finished-at="2018-12-14T18:58:29Z">
+        <test-method status="PASS" signature="getRestCallConfig()[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="getRestCallConfig" is-config="true" duration-ms="1" started-at="2018-12-14T20:11:41Z" finished-at="2018-12-14T20:11:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getRestCallConfig -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8]" name="afterMethod" is-config="true" duration-ms="96" started-at="2018-12-14T18:58:30Z" finished-at="2018-12-14T18:58:30Z">
+        <test-method status="PASS" signature="s400_MissingEmailField_ErrorReturned(java.lang.String)[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="s400_MissingEmailField_ErrorReturned" duration-ms="857" started-at="2018-12-14T20:11:41Z" description="testing error handling" data-provider="dataProvider" finished-at="2018-12-14T20:11:42Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=s200_Get_WeatherInfoByZipcode status=SUCCESS method=SampleAPITests.s200_Get_WeatherInfoByZipcode()[pri:0, instance:com.APITest.tests.SampleAPITests@7f9a81e8] output={null}]]]>
+                <![CDATA[Missing password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- s400_MissingEmailField_ErrorReturned -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8]" name="afterMethod" is-config="true" duration-ms="95" started-at="2018-12-14T20:11:42Z" finished-at="2018-12-14T20:11:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=s400_MissingEmailField_ErrorReturned status=SUCCESS method=SamplePostRequest.s400_MissingEmailField_ErrorReturned(java.lang.String)[pri:0, instance:com.APITest.tests.SamplePostRequest@7f9a81e8] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- com.APITest.tests.SampleAPITests -->
+      </class> <!-- com.APITest.tests.SamplePostRequest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
