@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.APITest.data.PostDataRV3Schedule;
+import com.APITest.testbase.APITestBase;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -15,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-public class PostV3 {
+public class PostV3 extends APITestBase {
 	
 public String coreRouting3 = "/core/routing/3";
 	
@@ -28,12 +29,10 @@ public String coreRouting3 = "/core/routing/3";
 	
 		PostDataRV3Schedule postdata = new PostDataRV3Schedule();
 		String myPostJson = postdata.schedulingRV3DirFalse;
-		APITestConfiguration restConfig = new APITestConfiguration();
-		restConfig.getRestCallConfig();
 		
 		Response response = 	   
 	     given()
-	    .header("Authorization",restConfig.authorization)
+	    .header("Authorization",authorization)
 	    .body(myPostJson).with().contentType("application/json")
 	    .then().expect().statusCode(200)
 	    .body(containsString("url"))
@@ -42,7 +41,7 @@ public String coreRouting3 = "/core/routing/3";
 	    .body(containsString("waypoints"))
 	    .and().time(lessThan(7000L))
 	    .when()
-	    .post(restConfig.baseURLStaging + coreRouting3)
+	    .post(baseURLStaging + coreRouting3)
 	    .then()
 	    .log().all()
 	    .contentType(ContentType.JSON)
@@ -54,7 +53,7 @@ public String coreRouting3 = "/core/routing/3";
 		Assert.assertTrue(code == 200, "The returned status code is not 200");
 		System.out.println("Status code is " + code);
 		
-		Assert.assertTrue(response.getTimeIn(TimeUnit.SECONDS) <= restConfig.timeLimitInt, "Response Time is not within limit");
+		Assert.assertTrue(response.getTimeIn(TimeUnit.SECONDS) <= timeLimitInt, "Response Time is not within limit");
 		System.out.println("The reponse time is " + response.getTimeIn(TimeUnit.SECONDS)+ " sec");
 		
 		String compareUrlStr = response.body().path("url");

@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,48 +15,18 @@ import java.util.concurrent.TimeUnit;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.APITest.testbase.APITestBase;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-public class RBShoes_Live_Show {
-	
-	protected static Properties restCallConfig;
-	public String baseURLStaging;
-	public String baseURLProd;
-	public String baseURL;
-	public String timeLimit;
-	public String timeLimitLStr;
-	public int timeLimitInt;
-	public String tileKey1Prod;
-	public String tileKey2Prod;
-	public String authorization;
-	public String xAPIKey;
-	
+public class RBShoes_Live_Show extends APITestBase {
+		
 	public String lastposition = "/live/lastposition";
 	public String history = "/live/history";
 	public String liveAuthSettings = "/live/auth/settings";
 	public String liveClientDevices = "/live/client/devices";
-	
-	
-	public void getRestCallConfig() throws FileNotFoundException, IOException {
 		
-		restCallConfig = new Properties();
-		restCallConfig.load(new FileInputStream("RestCallConfig.properties"));
-		
-		baseURLStaging = restCallConfig.getProperty("baseURLStaging");
-		baseURLProd = restCallConfig.getProperty("baseURLProd");
-		baseURL = restCallConfig.getProperty("baseURLStaging");
-		timeLimit = restCallConfig.getProperty("timeLimit");
-		timeLimitLStr = restCallConfig.getProperty("timeLimitL");
-		tileKey1Prod = restCallConfig.getProperty("tileKey1Prod");
-		tileKey2Prod = restCallConfig.getProperty("tileKey2Prod");
-		authorization = restCallConfig.getProperty("authorization");
-		xAPIKey = restCallConfig.getProperty("xAPIKey");
-		
-		timeLimitInt = Integer.parseInt(timeLimit);
-		
-	}
-	
 	/*
 	 *    /live/lastposition/1
 	 */
@@ -63,8 +34,7 @@ public class RBShoes_Live_Show {
 	@Test
 	public void s200_Get_Device_Positions() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-		
+			
 		Response response = 
 				given()
 				.param("deviceid", "calamp-4843003474")
@@ -77,6 +47,7 @@ public class RBShoes_Live_Show {
 				.body(containsString("true"))
 				.body(containsString("positions"))
 				.body("positions[0].deviceId", equalTo("calamp-4843003474"))
+				.body("positions[0].deviceId", is("calamp-4843003474"))
 				.log().all()
 				.contentType(ContentType.JSON)
 				.extract()

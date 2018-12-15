@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.RBShoesUI.testbase.TestBase;
+
 public class VerifyHomeEmailFieldTest extends TestBase {
 	
 	@Test
