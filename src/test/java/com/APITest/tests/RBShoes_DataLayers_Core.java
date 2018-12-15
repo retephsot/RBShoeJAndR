@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import com.APITest.data.PostData;
 import com.APITest.data.PostDataDataLayersCore1;
 import com.APITest.data.PostDataShapesBoundary1;
+import com.APITest.testbase.APITestBase;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
@@ -26,45 +27,14 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 
-public class RBShoes_DataLayers_Core {
-	
-	protected static Properties restCallConfig;
-	public String baseURLStaging;
-	public String baseURLProd;
-	public String baseURL;
-	public String timeLimit;
-	public String timeLimitLStr;
-	public int timeLimitInt;
-	public String tileKey1Prod;
-	public String tileKey2Prod;
-	public String authorization;
-	public String xAPIKey;
+public class RBShoes_DataLayers_Core extends APITestBase {
 	
 	public String coreRouting1 = "/core/routing/1";
 	public String coreRouting2 = "/core/routing/2";
 	public String coreIsoline1 = "/core/isoline/1";
 	public String coreBatchGeocode1 = "/core/batchgeocode/1";
 	public String coreGeocoding1 = "/core/geocoding/1";
-	
-	
-	public void getRestCallConfig() throws FileNotFoundException, IOException {
 		
-		restCallConfig = new Properties();
-		restCallConfig.load(new FileInputStream("APITestConfig.properties"));
-		
-		baseURLStaging = restCallConfig.getProperty("baseURLStaging");
-		baseURLProd = restCallConfig.getProperty("baseURLProd");
-		baseURL = restCallConfig.getProperty("baseURLStaging");
-		timeLimit = restCallConfig.getProperty("timeLimit");
-		timeLimitLStr = restCallConfig.getProperty("timeLimitL");
-		tileKey1Prod = restCallConfig.getProperty("tileKey1Prod");
-		tileKey2Prod = restCallConfig.getProperty("tileKey2Prod");
-		authorization = restCallConfig.getProperty("authorization");
-		xAPIKey = restCallConfig.getProperty("xAPIKey");
-		
-		timeLimitInt = Integer.parseInt(timeLimit);	
-	}
-	
 	/*
 	 *    /core/routing/1
 	 */
@@ -74,7 +44,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.tileVersionOfRoutingTrafficDisabled;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -113,7 +83,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.tileVersionOfRoutingTrafficEnabled;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -153,7 +123,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.optimizeWaypoints_PrintDirectionsPolyline;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -192,7 +162,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.multipleWaypoints8;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -231,7 +201,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.imperialUnitSystem;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -280,7 +250,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.eightyOne_WayPoints;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -329,7 +299,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.oneFiftyOne_WayPointsReturn400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -363,7 +333,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingWayPoint0_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -397,7 +367,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.onlyOne_WayPoint_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -431,7 +401,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingRequiredParam_MetricSystem_WayPoints_Mode_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -465,7 +435,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.only_WayPoints_Provided_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -499,7 +469,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingParams_Directions_Displaytiles_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -533,7 +503,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.invalidParams_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -567,7 +537,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.wrongDataType_AllBody_Param_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -600,7 +570,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.blankPostBody_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -634,7 +604,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingWayPoint2_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -668,7 +638,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.tileVersionRouting_Truck_Traff_Disabled;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -718,7 +688,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.tileVersionRouting_Truck_Traff_Enabled;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -771,7 +741,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Car_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -822,7 +792,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Bicycle_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -873,7 +843,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Custom_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -924,7 +894,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2TruckWithCustomProfileParams_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -977,7 +947,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Profile_Pedestrian_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1028,7 +998,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.timeBasedLegacyTrue_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1079,7 +1049,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Profile_Bicycle_AllFlexibleParamFalse_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1130,7 +1100,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Profile_Pedestrian_AllFlexibleParamTrue_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1180,7 +1150,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2BlockedTime_ProfileBicycle_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1230,7 +1200,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Profile_Pedestrian_25WayPoints_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1281,7 +1251,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Profile_Car_27WayPoints_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1332,7 +1302,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2Profile_Car_65WayPoints_URL_Directions_Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1383,7 +1353,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2_120WayPointsCar_DirReturned200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1439,7 +1409,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2_152WayPointsCar_ErrorReturned400;
-	   getRestCallConfig();
+	   
 		
 	   Response response = 	   
 			     given()
@@ -1472,7 +1442,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.coreRoutingV2_RepeatWayPointID_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1505,7 +1475,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingLastParam_Return200;
-	   getRestCallConfig();
+	   
 		
 	   Response response = 	   
 			     given()
@@ -1561,7 +1531,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingFirstAndLastParam_Return200;
-	   getRestCallConfig();
+	   
 		
 	   Response response = 	   
 			     given()
@@ -1617,7 +1587,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.notEnoughTimeForAllWayPointsQueueReturned200;
-	   getRestCallConfig();
+	   
 		
 	   Response response = 	   
 			     given()
@@ -1674,7 +1644,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.badWayPointLatSetTo0400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1706,7 +1676,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.noStartTimeWithFlexibleTrue_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1739,7 +1709,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routeStartAndRouteEndTimeIsBeforeWayPointStartTime_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1771,7 +1741,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.badLastStartTimeNotEnoughTime_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1804,7 +1774,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.blockTimeUeseUpAvailTime_FlexFalse_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1836,7 +1806,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.missingParam_Profile_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1868,7 +1838,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.wrongDataTypeFirstParam_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1901,7 +1871,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.wrongDataTypeWayPointStartTime_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1933,7 +1903,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.blankPostBody_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1965,7 +1935,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.Truck_TooTall_Height150_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1997,7 +1967,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.Truck_TooLong_Length400_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2030,7 +2000,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.Truck_TooWide_Width150_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2062,7 +2032,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.Truck_TooManyTrailers_5Trailers_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2094,7 +2064,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.timeBasedLegacyTrue_InvalidStartTime_400Returned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2131,7 +2101,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.coreRoutingV2_3WayPointsTileTrue200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2182,7 +2152,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.coreRoutingV2_3WayPointsAllOptFalse200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2234,7 +2204,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2_6WayPointsNearBy_Esri200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2282,7 +2252,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.routingV2_25WayPointsBicycle_DirReturned200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2330,7 +2300,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.wrongDataType_First_Param_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2361,7 +2331,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.wrongDataType_StartTime_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2394,7 +2364,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_GetRoutingIsolineSingleRange_IsolineReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2428,7 +2398,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_BadInputParamValues_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2463,7 +2433,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_InvalidRequestParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2495,7 +2465,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_NoRequestParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2527,7 +2497,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_RoutingIsoline_MultiRange_ResponseReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2561,7 +2531,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_NegativeRangeParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2593,7 +2563,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_NoModeRequestParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2624,7 +2594,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_MissingStartParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2659,7 +2629,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_MissingRangeParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2690,7 +2660,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_MissingRangeTypeParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2721,7 +2691,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_RoutingIsoline_ModeShortestCarTrafficEnabled_ResponseReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2756,7 +2726,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_RoutingIsoline_ModeShortestCarTrafficDisabled_ResponseReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2791,7 +2761,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_RoutingIsoline_FastestPedestrian_ResponseReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2826,7 +2796,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_RoutingIsoline_ShortestPedestrian_ResponseReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2867,7 +2837,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_BatchGeocode_GeoCodeArrayReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2903,7 +2873,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_MultipleAddresses_LatLngReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2955,7 +2925,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_OnlyCityProvided_LatLngReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3004,7 +2974,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_OnlyCountryProvided_LatLngReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3053,7 +3023,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_OnlyPostalProvided_LatLngReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3102,7 +3072,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_OnlyStreetValueProvided_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3137,7 +3107,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_BatchGeocodeLithonia_LatLngReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3186,7 +3156,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_FirstAddressValueInvalid_GeocodeDataReturnedSecAdd;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3237,7 +3207,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_InvalidAddressValue_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3272,7 +3242,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s200_MisMatchingBodyParam_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3307,7 +3277,7 @@ public class RBShoes_DataLayers_Core {
 	
 	   PostDataDataLayersCore1 postdata = new PostDataDataLayersCore1();
 	   String myPostJson = postdata.s500_InvalidParam_WrongDataType_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -3342,7 +3312,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_GeoCoder_LatLngReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -3376,7 +3346,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_MisMatchingRequestParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -3409,7 +3379,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_BadParam_Address_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -3438,7 +3408,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_GeoCoder_ATL_LatLngReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -3476,7 +3446,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_GeoCoder_AddressParam_InvalidCountry_LatLngReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -3511,7 +3481,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s400_GeoCoder_InvalidCityStateAndCountry_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -3540,7 +3510,7 @@ public class RBShoes_DataLayers_Core {
 	@Test
 	public void s200_MultipleAddress_LatLngReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()

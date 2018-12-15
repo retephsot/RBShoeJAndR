@@ -1,4 +1,4 @@
-package com.RBShoesJR.tests;
+package com.RBShoesUI.testbase;
 
 import java.awt.Toolkit;
 import java.io.File;

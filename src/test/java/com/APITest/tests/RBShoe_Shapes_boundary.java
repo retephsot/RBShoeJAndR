@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 import com.APITest.data.PostData;
 import com.APITest.data.PostDataDataLayersAPI;
 import com.APITest.data.PostDataShapesBoundary1;
+import com.APITest.testbase.APITestBase;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
@@ -22,19 +23,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 
-public class RBShoe_Shapes_boundary {
+public class RBShoe_Shapes_boundary extends APITestBase {
 	
-	protected static Properties restCallConfig;
-	public String baseURLStaging;
-	public String baseURLProd;
-	public String baseURL;
-	public String timeLimit;
-	public String timeLimitLStr;
-	public int timeLimitInt;
-	public String tileKey1Prod;
-	public String tileKey2Prod;
-	public String authorization;
-	public String xAPIKey;
 	
 	public String dataSourcesPath = "/data/sources/1";
 	public String boundaryOverLays = "/boundary/overlays/1";
@@ -43,25 +33,7 @@ public class RBShoe_Shapes_boundary {
 	public String boundaryTile = "/boundary/tile/1";
 	public String zipImport = "/boundary/zipimport/1";
 	
-	
-	public void getRestCallConfig() throws FileNotFoundException, IOException {
-		
-		restCallConfig = new Properties();
-		restCallConfig.load(new FileInputStream("RestCallConfig.properties"));
-		
-		baseURLStaging = restCallConfig.getProperty("baseURLStaging");
-		baseURLProd = restCallConfig.getProperty("baseURLProd");
-		baseURL = restCallConfig.getProperty("baseURLProd");
-		timeLimit = restCallConfig.getProperty("timeLimit");
-		timeLimitLStr = restCallConfig.getProperty("timeLimitL");
-		tileKey1Prod = restCallConfig.getProperty("tileKey1Prod");
-		tileKey2Prod = restCallConfig.getProperty("tileKey2Prod");
-		authorization = restCallConfig.getProperty("authorization");
-		xAPIKey = restCallConfig.getProperty("xAPIKey");
-		
-		timeLimitInt = Integer.parseInt(timeLimit);
-		
-	}
+
 			
 	/*
 	 *    /boundary/overlays/1
@@ -70,8 +42,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_ReturnArrayOfAllOverLay() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-		
+				
 		Response response = 
 				given()
 				.header("Authorization",authorization)
@@ -105,8 +76,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_AllParamsAvailable_ReturnOverLayArray() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-		
+			
 		Response response = 
 				given()
 				.param("level", "2")
@@ -143,7 +113,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200OverlayUSA_LevelsReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
 				
 		Response response = 
 				given()
@@ -182,7 +151,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400BadOverLayParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
 				
 		Response response = 
 				given()
@@ -213,7 +181,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400BadOverLay_0_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
 				
 		Response response = 
 				given()
@@ -244,8 +211,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_FieldsTrue_ReturnArrayOfFields() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
+
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -290,8 +256,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_FieldsParam_0_EmptyArrayOfFieldsReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
+
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -335,8 +300,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_BadRequestParams_Overlay_Field_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "123")
@@ -366,8 +330,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_OverlayCAN_fields_0_NoFieldsReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "CAN")
@@ -412,8 +375,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_FieldsParam_False_NoFieldsReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "CAN")
@@ -461,9 +423,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s200_Partial_SearchtermParam_DataReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -513,9 +473,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s200_NonExistant_SearchTerm_EmptyDataArrayReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -553,9 +511,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s400_MissingRequestParams_overlay_level_ErrorsReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -584,8 +540,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_AllRequestParams_Null_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
 		Response response = 
 				given()
 				.param("overlay", "null")
@@ -616,9 +570,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s400_MissingAllRequestParams_ErrorsReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.header("Authorization",authorization)
@@ -645,9 +597,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s400_MissingRequestParam_Level_ErrorReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -677,8 +627,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_MissingRequestParam_Field_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -708,8 +656,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_MissingRequestParam_searchterm_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -740,8 +686,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_BadRequestParam_Field_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -772,9 +716,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s400_BadRequestParam_Level_ErrorReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -804,9 +746,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s400_BadRequestParam_Overlay_ErrorReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "123")
@@ -837,9 +777,7 @@ public class RBShoe_Shapes_boundary {
 	
 	@Test
 	public void s400_BadRequestParam_all_ErrorReturned() throws IOException, InterruptedException {
-		
-		getRestCallConfig();
-				
+	
 		Response response = 
 				given()
 				.param("overlay", "123")
@@ -870,8 +808,6 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_SearchTerm_SpecialChar_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
-				
 		Response response = 
 				given()
 				.param("overlay", "USA")
@@ -910,7 +846,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void sGetting500Expecting400_RepeatingRequestParam_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -947,7 +883,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Bad_LevelParam_Negative_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -985,7 +921,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operatorRange100000_1000000_GeoIDsReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1030,7 +966,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.containsFors;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1077,7 +1013,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.containsGeo;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1125,7 +1061,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.lessThan10000;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1162,7 +1098,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.greaterThan10000;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1200,7 +1136,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.lessOrEqual100000;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1237,7 +1173,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.greaterOrEqual10000;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1275,7 +1211,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.notEqualTo10000;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1313,7 +1249,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.equals1000;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1357,7 +1293,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.startsWithA;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1401,7 +1337,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.containsX;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1445,7 +1381,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.doesNotContainH;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1489,7 +1425,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.endsWithE;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1533,7 +1469,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.containsForsErrorEncounteredBagley;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1577,7 +1513,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.containsGeoErrorEncounteredBagley;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1622,7 +1558,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operRangeBadMinMaxCharReturn400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1653,7 +1589,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.missingOverlayParam_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1684,7 +1620,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.missingBodyParamLevelReturn400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1715,7 +1651,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operContainsTrue_WrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1746,7 +1682,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.blankPostBody_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1777,7 +1713,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operLessThan_A_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1808,7 +1744,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operGreaterThan_B_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1839,7 +1775,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operLessOrEqualBadValueSpecialChar_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1870,7 +1806,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operGreaterOrEqualTrue_WrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1901,7 +1837,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operLessOrEqual_LaFondaLatinaWrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1932,7 +1868,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operGreaterOrEqual_RudebwoyWrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1963,7 +1899,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operStartsWith_False_WrongDataTypeBool_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1994,7 +1930,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operContains1234_WrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2025,7 +1961,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operDoesNotContain_1234_WrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2056,7 +1992,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.operEndsWith_False_WrongDataType_Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2088,7 +2024,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.startsWith1000Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2119,7 +2055,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.contains10000Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2150,7 +2086,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.doesNotContain10000Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2181,7 +2117,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.endsWith1000Return400;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2216,7 +2152,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_X_Y_Z_ParamIncluded_MapBoundaryIMGReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2253,7 +2189,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_TileID_ParamIncluded_MapBoundaryIMGReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2291,7 +2227,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_No_OverLay_ParamIncluded_MapBoundaryIMGReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2328,7 +2264,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s200_Diff_X_Y_Param_MapBoundaryIMGReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2365,7 +2301,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Only_X_Y_Z_Params_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2397,7 +2333,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_No_OverLay_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2430,7 +2366,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_No_Level_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2464,7 +2400,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_OverLay_Param_Null_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2498,7 +2434,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Repeating_XYZ_Params_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2535,7 +2471,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Repeating_TileIdOverlayLevel_Params_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2572,7 +2508,7 @@ public class RBShoe_Shapes_boundary {
 	
 	public void s400_Bad_OverLay_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2606,7 +2542,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Bad_X_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2639,7 +2575,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Bad_Y_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2672,7 +2608,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Bad_Z_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2705,7 +2641,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Missing_X_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2737,7 +2673,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Missing_Y_Param_ErrorReturned_400() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2769,7 +2705,7 @@ public class RBShoe_Shapes_boundary {
 	@Test
 	public void s400_Missing_Z_Param_ErrorReturned() throws IOException, InterruptedException {
 		
-		getRestCallConfig();
+		
 				
 		Response response = 
 				given()
@@ -2807,7 +2743,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.zipImportReturn200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2842,7 +2778,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.multiZipCodes_20_ZipValueReturned200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2875,7 +2811,7 @@ public class RBShoe_Shapes_boundary {
 	
 	   PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	   String myPostJson = postdata.repeatingZipCodes_ZipValueReturned200;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -2910,7 +2846,7 @@ public class RBShoe_Shapes_boundary {
 	
 		PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	    String myPostJson = postdata.wrongDataType_NumberZipCode_ErrorReturned;
-	    getRestCallConfig();
+	    
 		
 		Response response = 	   
 	     given()
@@ -2942,7 +2878,7 @@ public class RBShoe_Shapes_boundary {
 	
 		PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	    String myPostJson = postdata.wrongDataType_BoolZipCode_ErrorReturned;
-	    getRestCallConfig();
+	    
 		
 		Response response = 	   
 	     given()
@@ -2973,7 +2909,7 @@ public class RBShoe_Shapes_boundary {
 	
 		PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	    String myPostJson = postdata.invalidZipCode_ErrorReturned;
-	    getRestCallConfig();
+	    
 		
 		Response response = 	   
 	     given()
@@ -3004,7 +2940,7 @@ public class RBShoe_Shapes_boundary {
 	
 		PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	    String myPostJson = postdata.invalidZipCode_LeadingZeros_ErrorReturned;
-	    getRestCallConfig();
+	    
 		
 		Response response = 	   
 	     given()
@@ -3035,7 +2971,7 @@ public class RBShoe_Shapes_boundary {
 	
 		PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	    String myPostJson = postdata.emptyZipCodeArray_ErrorReturned;
-	    getRestCallConfig();
+	    
 		
 		Response response = 	   
 	     given()
@@ -3066,7 +3002,7 @@ public class RBShoe_Shapes_boundary {
 	
 		PostDataShapesBoundary1 postdata = new PostDataShapesBoundary1();
 	    String myPostJson = postdata.blankPostBody_Return400;
-	    getRestCallConfig();
+	    
 		
 		Response response = 	   
 	     given()

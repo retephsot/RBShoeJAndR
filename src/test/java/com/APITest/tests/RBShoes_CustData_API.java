@@ -17,47 +17,17 @@ import org.testng.annotations.Test;
 
 import com.APITest.data.PostDataDataLayersAPI;
 import com.APITest.data.PostDataDataLayersCore1;
+import com.APITest.testbase.APITestBase;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-public class RBShoes_CustData_API {
-	
-	protected static Properties restCallConfig;
-	public String baseURLStaging;
-	public String baseURLProd;
-	public String baseURL;
-	public String timeLimit;
-	public String timeLimitLStr;
-	public int timeLimitInt;
-	public String tileKey1Prod;
-	public String tileKey2Prod;
-	public String authorization;
-	public String xAPIKey;
-	
+public class RBShoes_CustData_API extends APITestBase {
+		
 	public String pointInPolygon1 = "/api/boots/1";
 	public String pointInPolygon2 = "/api/rbshoes/2";
 	public String pointsInPolygons = "/api/highheel/2";
 	
-	
-	public void getRestCallConfig() throws FileNotFoundException, IOException {
-		
-		restCallConfig = new Properties();
-		restCallConfig.load(new FileInputStream("APITestConfig.properties"));
-		
-		baseURLStaging = restCallConfig.getProperty("baseURLStaging");
-		baseURLProd = restCallConfig.getProperty("baseURLProd");
-		baseURL = restCallConfig.getProperty("baseURLStaging");
-		timeLimit = restCallConfig.getProperty("timeLimit");
-		timeLimitLStr = restCallConfig.getProperty("timeLimitL");
-		tileKey1Prod = restCallConfig.getProperty("tileKey1Prod");
-		tileKey2Prod = restCallConfig.getProperty("tileKey2Prod");
-		authorization = restCallConfig.getProperty("authorization");
-		xAPIKey = restCallConfig.getProperty("xAPIKey");
-		
-		timeLimitInt = Integer.parseInt(timeLimit);
-		
-	}
 	
 	/*
 	 *    /api/pointinpolygon/1
@@ -68,7 +38,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_PointInPolygon2ItemsReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -105,7 +75,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_StringDataTypeLatLngValue_2ItemsReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -144,7 +114,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_PointInPolygon7ItemsReturned2Intersec;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -187,7 +157,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_NoPolygonInPostBodyErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -219,7 +189,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_BlankPostBodyErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -253,7 +223,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_InvalidDataPolygonParam_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -287,7 +257,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_BadPointLatLngValues_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -318,7 +288,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_BadLatLngValueWrongDataType_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -350,7 +320,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_BadPathParamFirstPolygon_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -385,7 +355,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_PointInPolygonV2_7Items2Intersctions;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -428,7 +398,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_StringLatLngValue_5Items2Intersctions;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -471,7 +441,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_BadPathFirstPolygon_7Items1Intersecting;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -514,7 +484,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_BadPathPolygon1And2_7Items0Instersect;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -559,7 +529,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_InvalidPolygons_3ItemsNoInstersection;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -606,7 +576,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_BlankPostBodyErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -640,7 +610,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_EmptyPolygonArray_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -671,7 +641,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_MissingPointLatLng_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -706,7 +676,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_PointsInPolygons_3PointItemsIntersectingReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -742,7 +712,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_3PointItemsWithIntersecPolygonIdAndGeoidReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -784,7 +754,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_NoGeoIDProvided_3PointItem2IntersectionReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -823,7 +793,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_EmptyPath_2PointItemsNoIntersectionReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -861,7 +831,7 @@ public class RBShoes_CustData_API {
 	
 	   PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s200_StringLatLngValue3PointItemReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -896,7 +866,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_InvalidLatLngParam_Polygon5_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -927,7 +897,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_NoPolygonValue_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -958,7 +928,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_BlankPostBodyErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -989,7 +959,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_Invalid_PolygonID_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1020,7 +990,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_Invalid_PointID_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
@@ -1051,7 +1021,7 @@ public class RBShoes_CustData_API {
 	
 		PostDataDataLayersAPI postdata = new PostDataDataLayersAPI();
 	   String myPostJson = postdata.s400_Invalid_GeoID_ErrorReturned;
-	   getRestCallConfig();
+	   
 		
 		Response response = 	   
 	     given()
