@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.RBShoesJR.tests.ShoeBlurbAvailableTest">
+      <class name="com.APITest.tests.SampleAPITests">
         <methods>
-          <include name="isShoeBlurbAvailable"/>
-          <include name="beforeMethod"/>
-          <include name="beforSuite"/>
+          <include name="setAPITestConfig"/>
+          <include name="getRestCallConfig"/>
           <include name="afterMethod"/>
+          <include name="s200_Get_WeatherInfoByZipcode"/>
         </methods>
-      </class> <!-- com.RBShoesJR.tests.ShoeBlurbAvailableTest -->
+      </class> <!-- com.APITest.tests.SampleAPITests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
